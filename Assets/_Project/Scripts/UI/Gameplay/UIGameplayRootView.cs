@@ -1,4 +1,5 @@
-﻿using _Project.Scripts.Services.SceneLoader;
+﻿using _Project.Scripts.Services.InputService;
+using _Project.Scripts.Services.SceneLoader;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -10,21 +11,25 @@ namespace _Project.Scripts.UI.Gameplay
         [SerializeField] private Button _buttonMainMenu;
 
         private ISceneLoader _sceneLoader;
+        private IInputService _inputService;
         
         [Inject]
         private void Construct(ISceneLoader sceneLoader)
         {
             _sceneLoader = sceneLoader;
         }
-        
-        private void Awake()
-        {
-            _buttonMainMenu.onClick.AddListener(OnButtonMainMenuClick);
-        }
 
-        private void OnButtonMainMenuClick()
+        public void Init(IInputService inputService)
         {
-            _sceneLoader.LoadMainMenu();
+            _inputService = inputService;
+        }
+        
+        private void Update()
+        {
+            if (_inputService.EscPressed() == true)
+            {
+                _sceneLoader.LoadMainMenu();
+            }
         }
     }
 }

@@ -22,6 +22,7 @@ namespace _Project.Scripts.EntryPoints
         {
             UIGameplayRootView sceneUI = ProjectContext.Instance.Container
                 .InstantiatePrefabForComponent<UIGameplayRootView>(_uIGameplayRootViewPrefab);
+            sceneUI.Init(_inputService);
             uiRootView.AttachSceneUI(sceneUI.gameObject);
         }
     }
