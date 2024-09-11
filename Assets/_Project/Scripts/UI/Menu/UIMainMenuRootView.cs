@@ -22,6 +22,8 @@ namespace _Project.Scripts.UI.Menu
         {
             _buttonStart.onClick.AddListener(OnButtonStartClick);
             _buttonExit.onClick.AddListener(OnButtonExitClick);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         
         private void OnButtonStartClick()

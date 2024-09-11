@@ -37,16 +37,6 @@ namespace _Project.Scripts.Player
         {
             MoveCharacter();
             RotateView();
-            
-            if (_inputService.EscPressed() == true)
-            {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Cursor.visible = false;
-            }
         }
 
         private void MoveCharacter()
